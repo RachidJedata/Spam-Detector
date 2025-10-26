@@ -1,9 +1,7 @@
 # 📧 EMAIL SPAM CLASSIFIER PROJECT OUTLINE
 
 ## 1. CORE PROBLEM & OBJECTIVE
-### The initial MNB model showed high Precision (1.0) but poor Recall (missed 67% of spam).
-### Objective: Build a high-Recall classifier by combining sparse lexical features (TF-IDF)
-### with manually engineered structural features.
+### The initial binomial gaussian distribution model showed high recall (0.98) .
 
 ```
 def clean_text(text):
@@ -27,8 +25,8 @@ def clean_text(text):
 
 ## 3. FEATURE ENGINEERING & VECTORIZATION
 
-#### Initialization (Must be FIT on Training Data only!)
-#### tfidf_vectorizer = TfidfVectorizer(max_features=5000, ngram_range=(1, 2))
+#### Initialization
+#### tfidf_vectorizer = TfidfVectorizer(max_features=2000)
 #### scaler = MinMaxScaler()
 
 #### A. Manual (Structural) Features
@@ -49,12 +47,15 @@ manual_features_sparse = csr_matrix(manual_features.values)
 X_combined = hstack([X_text, manual_features_sparse])
 
 ```
-#### Total columns should match (e.g., 5000 + 5 = 5005)
 
-``` X_final_scaled = scaler.fit_transform(X_combined.toarray())```
+## 4. Data is Imbalanced
+so we'll use SMOTE to balance the data
+
+## 5. Using ANN 
+we'll use ANN to see that it will get similar results but for spam it will get 1.0
 
 
-## 4. PREDICTION PIPELINE (For Deployment)
+## 5. PREDICTION PIPELINE (For Deployment)
 
 ```
 def preprocess_for_predict(new_messages, tfidf_vectorizer, scaler):
