@@ -1,0 +1,16 @@
+# Core Data Manipulation & Visualization
+numpy
+pandas
+matplotlib
+seaborn
+wordcloud
+
+# Text Processing (NLP) & Machine Learning (scikit-learn)
+nltk
+scipy
+scikit-learn
+
+# Machine Learning Models
+xgboost
+
+imbalanced-learn
